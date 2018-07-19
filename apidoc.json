@@ -1,0 +1,14 @@
+{
+  "name": "中粮创意",
+  "version": "1.0.0",
+  "description": "中粮创意API开发文档",
+  "title": "demo",
+  "url": "http://192.168.2.123:8080",
+  "sampleUrl": "http://192.168.2.123:8080",
+  "order": [
+    "Error",
+    "Define",
+    "PostTitleAndError",
+    "PostError"
+  ]
+}

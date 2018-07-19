@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.cofco.appservice.bean.UserBean" table="t_user" dynamic-insert="true" dynamic-update="true">
+        <id name="uid" column="uid">
+            <generator class="native"></generator>
+        </id>
+        <property name="username" column="username"></property>
+        <property name="user_code"></property>
+        <property name="photo" column="photo"></property>
+        <property name="creative_num" column="creativenum"></property>
+        <property name="credit_num" column="creditnum"></property>
+    </class>
+    <class name="com.cofco.appservice.bean.MessageBean" table="t_message" dynamic-insert="true" dynamic-update="true"
+           lazy="true">
+        <id name="id" column="id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+        <property name="to_uid" column="uid" type="java.lang.String"/>
+        <property name="title" column="title" type="java.lang.String"/>
+        <property name="content" column="content" type="java.lang.String"/>
+        <property name="mktime" column="mktime" type="java.lang.String"/>
+        <property name="status_type" column="statusType" type="java.lang.String"/>
+    </class>
+
+    <class  name="com.cofco.appservice.bean.ImageBean" table="t_images" dynamic-insert="true" dynamic-update="true">
+       <id name="id" column="id" type="java.lang.Integer">
+           <generator class="native"/>
+       </id>
+        <property name="imageUrl" column="imgageUrl" type="java.lang.String"/>
+    </class>
+
+    <!--创意列表-->
+    <class name="com.cofco.appservice.bean.CreateLBean" table="t_createL" dynamic-insert="true" dynamic-update="true">
+    <id name="id" column="cretateId" type="java.lang.Integer">
+        <generator class="identity"/>
+    </id>
+        <property name="creative_id" column="creativeId" type="java.lang.Integer"/>
+        <property name="creative_name" column="creativeName" type="java.lang.String"/>
+        <property name="creative_description" column="creativeDescription" type="java.lang.String"/>
+        <property name="sort_id" column="sortId" type="java.lang.Integer"/>
+        <property name="creative_type" column="creativeType" type="java.lang.String"/>
+        <property name="collect_num" column="collectNum" type="java.lang.String"/>
+        <property name="praise_num" column="praiseNum" type="java.lang.String"/>
+        <property name="collect_id" column="collectId" type="java.lang.Integer"/>
+        <property name="comment_num" column="commentNum" type="java.lang.String"/>
+        <property name="create_time" column="createTime" type="java.lang.String"/>
+       <array name="photo" table="t_photo">
+           <key>
+               <column name="cretateId" not-null="true"/>
+           </key>
+           <list-index column="list_order"/>
+           <element type="java.lang.String" column="photoUrl"/>
+       </array>
+
+
+        <property name="vote_status" column="voteStatus" type="java.lang.Integer"/>
+        <property name="collect_status" column="collectStatus" type="java.lang.Boolean"/>
+        <property name="praise_status" column="praiseStatus" type="java.lang.Boolean"/>
+        <property name="comment_status" column="commentStatus" type="java.lang.Boolean"/>
+        <property name="vote_num" column="voteNum" type="java.lang.Integer"/>
+        <property name="status" column="status" type="java.lang.Integer"/>
+    </class>
+    <!--创意列表-->
+</hibernate-mapping>
